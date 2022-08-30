@@ -11,5 +11,3 @@ RUN yarn global add firebase-tools@${FIREBASE_TOOLS_VERSION}
 RUN echo "0.0.0.0   localhost" >> /tmp/hosts
 
 EXPOSE 9099 5001 8080 3000 9199 8085 4000 4500 4400
-
-CMD cat /tmp/hosts > /etc/hosts
