@@ -1,10 +1,10 @@
-FROM alpine:latest
+FROM node:16-alpine
 
 ENV FIREBASE_TOOLS_VERSION=10.9.2
 
 WORKDIR /var/app
 
-RUN apk add --no-cache openjdk17-jdk nodejs yarn npm curl zip python3 py3-pip && rm -fr /var/cache/apk/*
+RUN apk add --no-cache openjdk17-jdk nodejs yarn npm curl zip && rm -fr /var/cache/apk/*
 
 RUN yarn global add firebase-tools@${FIREBASE_TOOLS_VERSION}
 
