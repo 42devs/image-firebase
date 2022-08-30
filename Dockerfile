@@ -1,4 +1,4 @@
-FROM alpine:3
+FROM alpine:latest
 
 ENV FIREBASE_TOOLS_VERSION=10.9.2
 
