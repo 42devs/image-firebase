@@ -4,7 +4,7 @@ ENV FIREBASE_TOOLS_VERSION=10.9.2
 
 WORKDIR /var/app
 
-RUN apk add --no-cache openjdk17-slim nodejs yarn npm curl zip && rm -fr /var/cache/apk/*
+RUN apk add --no-cache openjdk17-jre-headless nodejs yarn npm curl zip && rm -fr /var/cache/apk/*
 
 RUN yarn global add firebase-tools@${FIREBASE_TOOLS_VERSION}
 
