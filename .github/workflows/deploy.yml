@@ -52,7 +52,7 @@ jobs:
       - name: Publish docker image
         if: ${{ github.event_name != 'pull_request' }}
         run: |
-          ocker push ${{ env.REPOSITORY }}:${{ env.VERSION }}-${{ matrix.context.node }}
+          docker push ${{ env.REPOSITORY }}:${{ env.VERSION }}-${{ matrix.context.node }}
           docker push ${{ env.REPOSITORY }}:${{ env.VERSION }}-${{ matrix.context.node }}-${{ matrix.context.os }}
           docker push ${{ env.REPOSITORY }}:latest-${{ matrix.context.node }}
 
