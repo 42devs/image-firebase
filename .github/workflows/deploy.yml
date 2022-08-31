@@ -13,7 +13,8 @@ on:
 
 env:
   REPOSITORY: 42devs/image-firebase
-  VERSION: 11.8.0
+  VERSION: 10.9.2
+  FIREBASE_TOOLS_VERSION: 10.9.2
 
 jobs:
   firebase-tools:
