@@ -36,7 +36,8 @@ RUN apk add --no-cache openjdk17-jre \
 	firebase setup:emulators:pubsub && \
 	firebase setup:emulators:storage && \
 	firebase -V && \
-	java --version
+	java --version && \
+	echo "0.0.0.0 	localhost" > /tmp/hosts
 
 VOLUME $HOME/.cache
 
