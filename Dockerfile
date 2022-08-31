@@ -1,13 +1,48 @@
 FROM alpine:latest
 
-ENV FIREBASE_TOOLS_VERSION=10.9.2
+ARG BUILD_DATE
 
-WORKDIR /var/app
+ARG VERSION
 
-RUN apk add --no-cache openjdk17-jre-headless nodejs yarn npm curl zip && rm -fr /var/cache/apk/*
+ARG VCS_REF
 
-RUN yarn global add firebase-tools@${FIREBASE_TOOLS_VERSION}
+ARG FIREBASE_TOOLS_VERSION
 
-RUN echo "0.0.0.0   localhost" > /tmp/hosts
+
+LABEL org.label-schema.schema-version="1.0" \
+	org.label-schema.name="42devs/image-firebase" \
+	org.label-schema.version=${VERSION} \
+	org.label-schema.build-date=${BUILD_DATE} \
+	org.label-schema.description="NodeJS image with Firebase CLI and emulators" \
+	org.label-schema.url="https://github.com/firebase/firebase-tools" \
+	org.label-schema.vcs-url="https://github.com/42devs/image-firebase" \
+	org.label-schema.vcs-ref=${VCS_REF}
+
+ENV HOME=/opt/node
 
 EXPOSE 9099 5001 8080 3000 9199 8085 4000 4500 4400
+
+RUN apk add --no-cache openjdk17-jre \
+	bash \
+	nodejs \
+	yarn \
+	npm \
+	curl \
+	zip && \
+	yarn global add firebase-tools@${FIREBASE_TOOLS_VERSION} && \
+	yarn cache clean && \
+	fireabse setup:emulators:firestore && \
+	fireabse setup:emulators:database && \
+	fireabse setup:emulators:pubsub && \
+	fireabse setup:emulators:storage && \
+	firebase -V && \
+	java --version && \
+	chown -R node:node $HOME
+
+USER node
+
+VOLUME $HOME/.cache
+
+WORKDIR $HOME
+
+CMD sh
