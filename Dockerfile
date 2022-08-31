@@ -31,10 +31,10 @@ RUN apk add --no-cache openjdk17-jre \
 	zip && \
 	yarn global add firebase-tools@${FIREBASE_TOOLS_VERSION} && \
 	yarn cache clean && \
-	fireabse setup:emulators:firestore && \
-	fireabse setup:emulators:database && \
-	fireabse setup:emulators:pubsub && \
-	fireabse setup:emulators:storage && \
+	firebase setup:emulators:firestore && \
+	firebase setup:emulators:database && \
+	firebase setup:emulators:pubsub && \
+	firebase setup:emulators:storage && \
 	firebase -V && \
 	java --version && \
 	chown -R node:node $HOME
