@@ -36,10 +36,11 @@ RUN apk add --no-cache openjdk17-jre \
 	firebase setup:emulators:pubsub && \
 	firebase setup:emulators:storage && \
 	firebase -V && \
-	java --version && \
-	chown -R node:node $HOME
+	java --version
 
 USER node
+
+RUN chown -R node:node $HOME
 
 VOLUME $HOME/.cache
 
