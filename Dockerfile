@@ -43,4 +43,4 @@ VOLUME $HOME/.cache
 
 WORKDIR $HOME
 
-CMD sh
+CMD bash
