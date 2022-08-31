@@ -45,6 +45,7 @@ jobs:
           --build-arg BUILD_DATE=$(date -u +'%Y-%m-%dT%H:%M:%SZ')
           --build-arg VERSION=${{ env.VERSION}}
           --build-arg VCS_REF=${{ github.sha }}
+          --build-arg FIREBASE_TOOLS_VERSION=${{ env.FIREBASE_TOOLS_VERSION }}
 
       - name: login to docker
         if: ${{ github.event_name != 'pull_request' }}
