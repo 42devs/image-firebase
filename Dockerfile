@@ -37,7 +37,7 @@ RUN apk add --no-cache openjdk17-jre \
 	firebase setup:emulators:storage && \
 	firebase -V && \
 	java --version && \
-	echo "0.0.0.0 	localhost" > /etc/hosts
+	curl -fsSL "https://github.com/pnpm/pnpm/releases/latest/download/pnpm-linuxstatic-x64" -o /bin/pnpm; chmod +x /bin/pnpm;
 
 VOLUME $HOME/.cache
 
